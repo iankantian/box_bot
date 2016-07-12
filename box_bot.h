@@ -20,9 +20,16 @@ void boxBotInit(){
   pinMode(pwmA, OUTPUT);
 
   // I chose arbitrarily where to plug the receiver sense pins
-  pinMode(ch1, INPUT);
-  pinMode(ch2, INPUT);
-  pinMode(ch3, INPUT);
+  // using on board pull ups in case of wire breakage.
+  pinMode(ch1, INPUT_PULLUP);
+  pinMode(ch2, INPUT_PULLUP);
+  pinMode(ch3, INPUT_PULLUP);
+
+  // get initial weapon  state
+  if( pulseIn( ch3, HIGH, 40000 ) > 1500 ){
+    weaponPulseState = true;
+  }
+
 }
 
 // standbyHBridge derived from truth table of the Toshiba TB6612 dual H-bridge
@@ -38,7 +45,11 @@ void enableHBridge() {
 }
 
 int conditionPulse( int pulse, int deadBand ){
-  // assuming a 1000 uS to 2000 uS input, with 500 uS either side of middle, 
+  // Check to see if valid pulse ~800 to ~2200 uS.  If not, it should
+  // be set to middle: 1500
+  if( pulse < 800 || pulse > 2200 ){
+    pulse = 1500;
+  }
   // turn positve integer into a range of values centered on 0:
   pulse -= 1500;
 //  Serial.print("pulse before conditioning is ");

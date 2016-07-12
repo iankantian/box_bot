@@ -2,7 +2,7 @@
 =======
 Joshua Brown 2016
 
-Imagine the Chaos and Destruction of [BattleBots](http://www.battlebots.com/) or [RoboGames](http://robogames.net/index.php)! Now imagine if they were all made out of cardboard,  ... and also under 1.5 pounds!  That is [Box Bots](https://www.acemonstertoys.org/box-bots/).  The intent of Box Bots is to make a robot fighting league in which you don't need to spend tens of thousands of dollars to play.  The season entry fee of $95 includes everything you need to fight, to the robot-death, in the Area of Resolution!  The fundamental engineering constraint, is the chassis material.  You may only use ONE (1) 4" X 6" C4-fluted, cardboard box to 'primarily' construct your chassis.  Each active component, that can exert a force or a torque, may only be connected to other active components with this cardboard.
+Imagine the Chaos and Destruction of [BattleBots](http://www.battlebots.com/) or [RoboGames](http://robogames.net/index.php)! Now imagine if they were all made out of cardboard,  ... and also under 1.5 pounds!  That is [Box Bots](https://www.acemonstertoys.org/box-bots/).  The intent of Box Bots is to make a robot fighting league in which you don't need to spend tens of thousands of dollars to play.  The season entry fee of $95 includes everything you need to fight, to the robot-death, in the Arena of Resolution!  The fundamental engineering constraint, is the chassis material.  You may only use ONE (1) 4" X 6" C4-fluted, cardboard box to 'primarily' construct your chassis.  Each active component, that can exert a force or a torque, may only be connected to other active components with this cardboard.
 
 =======
 
