@@ -10,7 +10,7 @@ void boxBotInit(){
   Serial.begin(9600);
 
   // pins for the motor controller assigned by the custom circuit board 
-  // designed and built by Ray at Ace Monster Toys
+  // designed and built by Ray Alderman at Ace Monster Toys
   pinMode(pwmB, OUTPUT);
   pinMode(bin2, OUTPUT);
   pinMode(bin1, OUTPUT);
@@ -78,14 +78,13 @@ float normalizePulse( int pulse, int deadBand ){
   pulse -= 1500;
   //  Serial.print("pulse before conditioning is ");
   //  Serial.println( pulse );
-  // remove noise of just sitting still with the controller
   if( pulse > deadBand || pulse < -deadBand ){
      norm_pulse = pulse / 500.0;
   }
   else{
       norm_pulse = 0.0;
   }
-  return norm_pulse;
+  return constrain( norm_pulse, -1.0, 1.0 );
 }
 
 float expo( float input, float factor ){
@@ -96,17 +95,6 @@ float expo( float input, float factor ){
   // thanks to user "rcgdlr" at https://www.physicsforums.com/threads/equation-required-to-calculate-exponential-rate.524002/
   // for this equation.
   return( ( ( 1 - factor ) * input * input * input )  + ( factor * input ) );
-}
-
-// limit helper function
-int limitPlusMinus( int input, int limit ){
-  if ( input > limit ) {
-    input = limit;
-  }
-  if ( input < -limit ) {
-    input = -limit;
-  }
-  return input;
 }
 
 // drive function is derived by the truth table of the 
@@ -158,13 +146,13 @@ void drive( int motor, int velocity ) {
 void driveNormalized( int motor, float velocity ) {
   if ( motor == 1 ) {
     // going backwards
-    if ( velocity < 0 ) {
+    if ( velocity < 0.0 ) {
       analogWrite( pwmA, ( int )constrain( -velocity * 255, -255, 255 ) );
       digitalWrite( ain1, LOW );
       digitalWrite( ain2, HIGH );
     }
     // going forwards
-    else if ( velocity > 0 ) {
+    else if ( velocity > 0.0 ) {
       analogWrite( pwmA, ( int )constrain( velocity * 255, -255, 255 ) );
       digitalWrite( ain1, HIGH );
       digitalWrite( ain2, LOW );
@@ -177,12 +165,12 @@ void driveNormalized( int motor, float velocity ) {
     }
   }
   else if ( motor == 2) {
-    if ( velocity < 0 ) {
+    if ( velocity < 0.0 ) {
       analogWrite( pwmB, ( int )constrain( -velocity * 255, -255, 255 ) );
       digitalWrite( bin1, LOW );
       digitalWrite( bin2, HIGH );
     }
-    else if ( velocity > 0 ) {
+    else if ( velocity > 0.0 ) {
       analogWrite( pwmB, ( int )constrain( velocity * 255, -255, 255 ) );
       digitalWrite( bin1, HIGH );
       digitalWrite( bin2, LOW );

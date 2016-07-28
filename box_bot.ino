@@ -20,6 +20,8 @@ void loop() {
   int ch3_pulse = pulseIn( ch3, HIGH, 40000 );
   float normalized_forward = 0.0;
   float normalized_rotation = 0.0;
+  float normalized_velocity_right = 0.0;
+  float normalized_velocity_left = 0.0;
 
   // On the AMT Class stock radio, channel 3 toggles between 980 uS and 1995 uS 
   // on pressing the little button.  Store the state of button before checking again.
@@ -44,6 +46,10 @@ void loop() {
   velocity_right = forward - rotation;
   velocity_left = forward + rotation;
 
+  // expo 1.0 is linear, 0.0 to 1.0 is less sensitive at center, 1.0 to 1.5 is more sensitive at center
+  normalized_velocity_right = expo( ( normalized_forward - normalized_rotation ), 1.0 );
+  normalized_velocity_left = expo( ( normalized_forward + normalized_rotation ), 1.0 );
+
   // turn off the H Bridge while doing nothing
   if ( velocity_right == 0 && velocity_left == 0 ) {
     standbyHBridge();
@@ -53,8 +59,8 @@ void loop() {
   }
 
   // constrain the results to +/- 255
-  velocity_left = limitPlusMinus( velocity_left, 255 );
-  velocity_right = limitPlusMinus( velocity_right, 255 );
+  velocity_left = constrain( velocity_left, -255, 255 );
+  velocity_right = constrain( velocity_right, -255, 255 );
 
   // order the H Bridge to control the motors.
   drive( 1, velocity_left );
