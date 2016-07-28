@@ -22,7 +22,10 @@
   D8 ain2
   D9 pwmA
 
-  The Rx sense pins are connected arbitrarily to A0, A1, A2
+  The Rx sense pins are connected arbitrarily to: 
+  A0 ch1 blue wire
+  A1 ch2 brown wire
+  A2 ch3 yellow wire
 */
 
 #define pwmB 3

@@ -18,6 +18,8 @@ void loop() {
   int ch1_pulse = pulseIn( ch1, HIGH, 40000 );
   int ch2_pulse = pulseIn( ch2, HIGH, 40000 );
   int ch3_pulse = pulseIn( ch3, HIGH, 40000 );
+  float normalized_forward = 0.0;
+  float normalized_rotation = 0.0;
 
   // On the AMT Class stock radio, channel 3 toggles between 980 uS and 1995 uS 
   // on pressing the little button.  Store the state of button before checking again.
@@ -27,17 +29,17 @@ void loop() {
   rotation = conditionPulse( ch2_pulse, deadBand );
   weapon = conditionPulse( ch3_pulse, deadBand );
 
+  normalized_forward = normalizePulse( ch1_pulse, deadBand );
+  normalized_rotation = normalizePulse( ch2_pulse, deadBand );
+  
   if( weapon < 0 ){ weaponPulseState = false; }
   if( weapon > 0 ){ weaponPulseState = true; }
   
   if( weaponPulseState != oldWeaponPulseState ){
     // Do something brutal with this data.
+    // Serial.println( "Weapon!" );
   }
-
-  // reverse steering while backing up, just feels more like driving a car:
-  if( forward < -deadBand ){
-    rotation = -rotation;
-  }
+  
   // simple differential drive:
   velocity_right = forward - rotation;
   velocity_left = forward + rotation;
