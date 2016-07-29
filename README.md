@@ -8,6 +8,8 @@ Imagine the Chaos and Destruction of [BattleBots](http://www.battlebots.com/) or
 
 This Arduino sketch is the on-board software for my as-yet-to-be-named box-bot.  The remote control radio receiver signals are interpreted by the code running on an Arduino Nano and output to a motor driver for a tank drive style platform.
 
+The code uses 'expo' on the steering channel to help blend in my steering inputs with my throttle habits.  For an example of just using 'linear' control, see the 'forward' or 'throttle' channel.  You can also just use a factor of '1.0' when invoking the function to the same effect.
+
 =======
 
 The plan is to have two classes of fighting box-bots.  The 'Stock' or 'AMT Class' will be constructed from the parts that come in a kit provided by the price of admission to the season of box-bots.  It contains:
@@ -30,5 +32,9 @@ The plan is to have two classes of fighting box-bots.  The 'Stock' or 'AMT Class
 * you may add up to $40 of stuff other than that, perhaps a weapon?
 
 The 'Open Class' you may provide any or all of your own materials with the exception of the cardboard box.  That is the only chassis material you get!  You can't get muliple boxes and just make an impervious cube of solid cardboard.  But in the Open Class you may use higher performance motors, radios, etc.
+
+=======
+
+To see some more examples of corrugated cardboard combat, see: [Columbia Gadget Works](http://columbiagadgetworks.org/tag/cardboard/) in Missouri.  With us in San Francisco Bay Area and them in Missouri, perhaps a National Box Bot Championship event could be had?
 
 

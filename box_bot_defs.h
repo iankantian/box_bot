@@ -45,9 +45,9 @@ int velocity_right = 0;
 int velocity_left = 0;
 int forward;
 int rotation;
-int weapon;
-bool weaponPulseState = false;
-bool oldWeaponPulseState = false;
+//int weapon;
+//bool weaponPulseState = false;
+//bool oldWeaponPulseState = false;
 
 
 
