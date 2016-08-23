@@ -49,6 +49,14 @@ int rotation;
 //bool weaponPulseState = false;
 //bool oldWeaponPulseState = false;
 
+// these variables hold the current state of motor control
+float currentLeft = 0.0;
+float currentRight = 0.0;
+// slewRate is the allowed acceleration, idea being to reduce the amount of 
+// impulse (hammering) upon the plastic gearmotors that I do while driving!
+// at a slew of 0.1, it will take 10 cycles of the main loop to go from 0 to full
+float slewRate = 0.2;
+
 
 
 
